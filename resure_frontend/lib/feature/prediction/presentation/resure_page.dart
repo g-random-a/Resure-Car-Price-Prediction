@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/core/images.dart';
+import 'package:frontend/feature/prediction/presentation/input_page.dart';
+import 'package:go_router/go_router.dart';
 
 class ResurePage extends StatelessWidget {
   const ResurePage({super.key});
@@ -8,15 +10,23 @@ class ResurePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       children: [
-        Image.asset(RessureImages.carImage),
-        Positioned(
-          child: Image.asset(RessureImages.logoImage),
-          top: 100,
-          left: 90,
+        Container(
+          height: MediaQuery.of(context).size.height * 0.6,
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage(RessureImages.carImage),
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         Positioned(
-            top: 170,
-            left: 100,
+          child: Image.asset(RessureImages.logoImage),
+          top: MediaQuery.of(context).size.height * 0.125,
+          left: MediaQuery.of(context).size.width * 0.35,
+        ),
+        Positioned(
+            top: MediaQuery.of(context).size.height * 0.225,
+            left: MediaQuery.of(context).size.width * 0.4,
             child: Text(
               "Resure",
               style: TextStyle(
@@ -35,7 +45,7 @@ class ResurePage extends StatelessWidget {
                 topRight: Radius.circular(40),
               ),
             ),
-            height: 450,
+            height: MediaQuery.of(context).size.height * 0.55,
             width: MediaQuery.of(context).size.width,
             child: Column(
               children: [
@@ -62,12 +72,7 @@ class ResurePage extends StatelessWidget {
                       child: Text(
                         textAlign: TextAlign.center,
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum rhoncus imperdiet. Donec a mauris volutpat turpis volutpat suscipit. ",
-                        style: TextStyle(
-                          fontWeight: FontWeight.w500,
-                          color: Colors.black,
-                          decoration: TextDecoration.none,
-                          fontSize: 14,
-                        ),
+                        style: styles(),
                       ),
                     ),
                     SizedBox(
@@ -80,7 +85,14 @@ class ResurePage extends StatelessWidget {
                         color: Colors.blue,
                         borderRadius: BorderRadius.circular(10.0),
                         child: MaterialButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            onTap:
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => InputPage()),
+                            );
+                          },
                           minWidth: 300.0,
                           height: 60.0,
                           child: Text(
@@ -99,6 +111,15 @@ class ResurePage extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+
+  TextStyle styles() {
+    return TextStyle(
+      fontWeight: FontWeight.w500,
+      color: Colors.black,
+      decoration: TextDecoration.none,
+      fontSize: 14,
     );
   }
 }
