@@ -5,7 +5,7 @@ class PredictionRepository {
   PredictionDataProvider predictionDataProvider;
   PredictionRepository(this.predictionDataProvider);
 
-  Future<Prediction> create(Prediction prediction) async {
+  Future<String> create(Prediction prediction) async {
     return await predictionDataProvider.create(prediction);
   }
 }
