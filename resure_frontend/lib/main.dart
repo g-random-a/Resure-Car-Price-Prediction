@@ -1,36 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:frontend/feature/prediction/data/data_provider.dart/data_provider.dart';
+import 'package:frontend/feature/prediction/data/repository/repository.dart';
+import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
 import 'package:go_router/go_router.dart';
 
-void main() => runApp(const Home());
+void main(List<String> args) {
+  runApp(Home());
+}
 
 class Home extends StatelessWidget {
-  const Home({super.key});
+  final PredictionRepository predictionRepository =
+      PredictionRepository(PredictionDataProvider());
+  Home({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: ResurePage(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<PredictionBloc>(
+            create: (context) =>
+                PredictionBloc(predictionRepository: predictionRepository)),
+      ],
+      child: const MaterialApp(
+        home: ResurePage(),
+      ),
     );
   }
 }
-
-final GoRouter _router = GoRouter(
-  routes: <RouteBase>[
-    GoRoute(
-      path: '/',
-      builder: (BuildContext context, GoRouterState state) {
-        return const ResurePage();
-      },
-      routes: <RouteBase>[
-        GoRoute(
-          path: '/input_page',
-          builder: (BuildContext context, GoRouterState state) {
-            return const InputPage();
-          },
-        ),
-      ],
-    ),
-  ],
-);
