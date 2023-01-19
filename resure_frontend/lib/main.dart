@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
+import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,7 +12,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: ResurePage(),
+      home: MyWidget(),
     );
   }
 }
