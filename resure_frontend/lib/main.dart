@@ -4,6 +4,7 @@ import 'package:frontend/feature/prediction/data/data_provider.dart/data_provide
 import 'package:frontend/feature/prediction/data/repository/repository.dart';
 import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
+import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
 
 void main(List<String> args) {
