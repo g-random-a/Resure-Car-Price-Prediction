@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:frontend/core/images.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
-import 'package:go_router/go_router.dart';
 
 class ResurePage extends StatelessWidget {
   const ResurePage({super.key});
