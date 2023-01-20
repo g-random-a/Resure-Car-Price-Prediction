@@ -5,7 +5,6 @@ import 'package:frontend/feature/prediction/data/repository/repository.dart';
 import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
-import 'package:go_router/go_router.dart';
 
 void main(List<String> args) {
   runApp(Home());
