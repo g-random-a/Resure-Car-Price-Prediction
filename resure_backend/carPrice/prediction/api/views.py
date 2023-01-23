@@ -30,4 +30,4 @@ def CarList(request):
     y_pred = mdl.predict(dd)
     # ans = 'Positive' if y_pred[0] else 'Negative'
     # print(ans)
-    return JsonResponse('The price for this car is {}'.format(y_pred[0]), safe=False)
+    return JsonResponse(y_pred[0], safe=False)

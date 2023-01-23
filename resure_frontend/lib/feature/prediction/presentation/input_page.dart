@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/core/images.dart';
+import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
+import 'package:frontend/feature/prediction/domain/bloc/prediction_event.dart';
+import 'package:frontend/feature/prediction/domain/bloc/prediction_state.dart';
+import 'package:frontend/feature/prediction/model/prediction.dart';
 
 class InputPage extends StatefulWidget {
   const InputPage({super.key});
@@ -30,7 +35,7 @@ class _InputPageState extends State<InputPage> {
         Center(
           child: Container(
             width: MediaQuery.of(context).size.width * 0.8,
-            height: MediaQuery.of(context).size.height * 0.7,
+            height: MediaQuery.of(context).size.height * 0.75,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(13),
@@ -61,6 +66,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'alfa-romerogiulia',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -73,11 +79,10 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["child_name"] = value;
+                                      _register["CarName"] = value;
                                     });
                                   }),
                             ),
-
                             const SizedBox(
                               height: 22.0,
                             ),
@@ -90,6 +95,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'gas',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -102,7 +108,7 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["fuel_type"] = value;
+                                      _register["fueltype"] = value;
                                     });
                                   }),
                             ),
@@ -118,6 +124,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'std',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -146,6 +153,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'two',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -174,6 +182,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'convertible',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -202,6 +211,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'rwd',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -230,6 +240,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'front',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -258,6 +269,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'four',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -286,6 +298,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: 'mpfi',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -314,6 +327,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '3',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -326,7 +340,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["symboling"] = value;
+                                      _register["symboling"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -342,6 +357,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '88',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -354,7 +370,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["wheelbase"] = value;
+                                      _register["wheelbase"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -370,6 +387,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '174',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -382,7 +400,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["carlength"] = value;
+                                      _register["carlength"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -398,6 +417,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '65',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -410,7 +430,7 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["carwidth"] = value;
+                                      _register["carwidth"] = int.parse(value!);
                                     });
                                   }),
                             ),
@@ -426,6 +446,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '53',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -438,7 +459,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["carheight"] = value;
+                                      _register["carheight"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -446,7 +468,7 @@ class _InputPageState extends State<InputPage> {
                               height: 22.0,
                             ),
                             Text(
-                              'cur bweight',
+                              'curb weight',
                               style: styles(),
                             ),
                             const SizedBox(
@@ -454,6 +476,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '2555',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -466,11 +489,12 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["curbweight"] = value;
+                                      _register["curbweight"] =
+                                          int.parse(value!);
+                                      ;
                                     });
                                   }),
                             ),
-
                             const SizedBox(
                               height: 22.0,
                             ),
@@ -483,6 +507,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '130',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -495,7 +520,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["enginesize"] = value;
+                                      _register["enginesize"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -511,6 +537,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '3',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -523,7 +550,7 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["stroke"] = value;
+                                      _register["stroke"] = int.parse(value!);
                                     });
                                   }),
                             ),
@@ -539,6 +566,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '9',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -551,7 +579,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["compressionratio"] = value;
+                                      _register["compressionratio"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -567,6 +596,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '111',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -579,7 +609,8 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["horsepower"] = value;
+                                      _register["horsepower"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
@@ -595,6 +626,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '5000',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -607,7 +639,7 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["peakrpm"] = value;
+                                      _register["peakrpm"] = int.parse(value!);
                                     });
                                   }),
                             ),
@@ -623,6 +655,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '21',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -635,7 +668,7 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["city mpg"] = value;
+                                      _register["citympg"] = int.parse(value!);
                                     });
                                   }),
                             ),
@@ -651,6 +684,7 @@ class _InputPageState extends State<InputPage> {
                             ),
                             Material(
                               child: TextFormField(
+                                  initialValue: '27',
                                   validator: (value) {
                                     if (value != null && value.isEmpty) {
                                       return '';
@@ -663,82 +697,70 @@ class _InputPageState extends State<InputPage> {
                                   ),
                                   onSaved: (value) {
                                     setState(() {
-                                      _register["highwaympg"] = value;
+                                      _register["highwaympg"] =
+                                          int.parse(value!);
                                     });
                                   }),
                             ),
-
-                            // TextFormField(
-                            //     validator: (value) {
-                            //       if (value != null && value.isEmpty) {
-                            //         return 'please enter gender';
-                            //       }
-                            //       var check = value.toString();
-                            //       if ((check.compareTo("male") == 0) ||
-                            //           (check.compareTo("female") == 0)) {
-                            //         return null;
-                            //       }
-                            //       return 'gender must be "male" or "female"';
-                            //     },
-                            //     textAlign: TextAlign.center,
-                            //     decoration: kTextFileDecoration.copyWith(
-                            //       hintText: 'enter gender',
-                            //     ),
-                            //     onSaved: (value) {
-                            //       setState(() {
-                            //         _register["gender"] = value;
-                            //       });
-                            //     }),
-                            // SizedBox(
-                            //   height: 24.0,
-                            // ),
-                            // TextFormField(
-                            //     keyboardType: TextInputType.number,
-                            //     validator: (value) {
-                            //       if (value != null && value.isEmpty) {
-                            //         return 'enter age';
-                            //       }
-                            //       if (double.tryParse(value!) == null) {
-                            //         return 'The input is not a numeric string';
-                            //       }
-                            //       return null;
-                            //     },
-                            //     textAlign: TextAlign.center,
-                            //     decoration: kTextFileDecoration.copyWith(
-                            //       hintText: 'age',
-                            //     ),
-                            //     onSaved: (value) {
-                            //       setState(() {
-                            //         _register["age"] = int.parse(value!);
-                            //       });
-                            //     }),
-                            // SizedBox(
-                            //   height: 24.0,
-                            // ),
-                            // TextFormField(
-                            //     keyboardType: TextInputType.multiline,
-                            //     maxLines: null,
-                            //     validator: (value) {
-                            //       if (value != null && value.isEmpty) {
-                            //         return 'enter description';
-                            //       }
-                            //       final validdescription = value!.length > 20;
-                            //       return validdescription
-                            //           ? null
-                            //           : "Desctiption length must be > 20";
-                            //     },
-                            //     textAlign: TextAlign.center,
-                            //     decoration: kTextFileDecoration.copyWith(
-                            //       hintText: 'enter description',
-                            //     ),
-                            //     onSaved: (value) {
-                            //       setState(() {
-                            //         _register["description"] = value;
-                            //       });
-                            //     }),
-                            // SizedBox(
-                            //   height: 24.0,
-                            // ),
+                            const SizedBox(
+                              height: 22.0,
+                            ),
+                            Text(
+                              'bore ratio',
+                              style: styles(),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Material(
+                              child: TextFormField(
+                                  initialValue: '3',
+                                  validator: (value) {
+                                    if (value != null && value.isEmpty) {
+                                      return '';
+                                    }
+                                    return null;
+                                  },
+                                  textAlign: TextAlign.center,
+                                  decoration: kTextFileDecoration.copyWith(
+                                    hintText: 'Enter bore ratio',
+                                  ),
+                                  onSaved: (value) {
+                                    setState(() {
+                                      _register["boreratio"] =
+                                          int.parse(value!);
+                                    });
+                                  }),
+                            ),
+                            const SizedBox(
+                              height: 22.0,
+                            ),
+                            Text(
+                              'engine type',
+                              style: styles(),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            Material(
+                              child: TextFormField(
+                                  initialValue: 'one',
+                                  validator: (value) {
+                                    if (value != null && value.isEmpty) {
+                                      return '';
+                                    }
+                                    return null;
+                                  },
+                                  textAlign: TextAlign.center,
+                                  decoration: kTextFileDecoration.copyWith(
+                                    hintText: 'Enter engine type',
+                                  ),
+                                  onSaved: (value) {
+                                    setState(() {
+                                      _register["enginetype"] = value;
+                                    });
+                                  }),
+                            ),
                           ],
                         ),
                       ),
@@ -747,6 +769,20 @@ class _InputPageState extends State<InputPage> {
                     color: const Color.fromARGB(255, 156, 153, 153)
                         .withOpacity(0.1),
                   ),
+                  BlocConsumer<PredictionBloc, PredictionState>(
+                    listener: (context, state) {
+                      if (state is PredictionOperationSucess) {
+                        print("object");
+                      }
+                    },
+                    builder: (context, state) {
+                      if (state is PredictionOperationSucess) {
+                        print(state.price);
+                        return Text('');
+                      }
+                      return Text('');
+                    },
+                  ),
                   Padding(
                     padding: const EdgeInsets.symmetric(vertical: 16.0),
                     child: Material(
@@ -754,7 +790,40 @@ class _InputPageState extends State<InputPage> {
                       color: Colors.blue,
                       borderRadius: BorderRadius.circular(10.0),
                       child: MaterialButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          final form = _formKey.currentState;
+                          if (form != null && form.validate()) {
+                            form.save();
+                            final PredictionEvent event =
+                                PredictionCreate(Prediction(
+                              CarName: _register["CarName"],
+                              fueltype: _register["fueltype"],
+                              aspiration: _register["aspiration"],
+                              doornumber: _register["doornumber"],
+                              carbody: _register["carbody"],
+                              drivewheel: _register["drivewheel"],
+                              enginelocation: _register["enginelocation"],
+                              enginetype: _register["enginetype"],
+                              cylindernumber: _register["cylindernumber"],
+                              fuelsystem: _register["fuelsystem"],
+                              symboling: _register["symboling"],
+                              wheelbase: _register["wheelbase"],
+                              carlength: _register["carlength"],
+                              carwidth: _register["carwidth"],
+                              carheight: _register["carheight"],
+                              curbweight: _register["curbweight"],
+                              enginesize: _register["enginesize"],
+                              boreratio: _register["boreratio"],
+                              stroke: _register["stroke"],
+                              compressionratio: _register["compressionratio"],
+                              horsepower: _register["horsepower"],
+                              peakrpm: _register["peakrpm"],
+                              citympg: _register["citympg"],
+                              highwaympg: _register["highwaympg"],
+                            ));
+                            BlocProvider.of<PredictionBloc>(context).add(event);
+                          }
+                        },
                         minWidth: 200.0,
                         height: 60.0,
                         child: const Text(
