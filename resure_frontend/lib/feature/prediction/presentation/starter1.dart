@@ -89,8 +89,8 @@ class _Starter1State extends State<Starter1> {
               effect: const ExpandingDotsEffect(
                 dotColor: Color.fromARGB(255, 138, 130, 130),
                 activeDotColor: Colors.blue,
-                dotWidth: 8,
-                dotHeight: 10,
+                dotWidth: 15,
+                dotHeight: 14,
               ),
             ),),
 
