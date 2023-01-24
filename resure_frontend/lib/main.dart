@@ -8,6 +8,11 @@ import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
 import 'package:frontend/feature/prediction/presentation/starter1.dart';
 
+import 'feature/prediction/data/data_provider.dart/Rating_data_provider.dart';
+import 'feature/prediction/data/repository/rating.dart';
+import 'feature/prediction/data/repository/rating.dart';
+import 'feature/prediction/domain/bloc/RatingBloc/rating_bloc.dart';
+
 void main(List<String> args) {
   runApp(Home());
 }
@@ -15,6 +20,8 @@ void main(List<String> args) {
 class Home extends StatelessWidget {
   final PredictionRepository predictionRepository =
       PredictionRepository(PredictionDataProvider());
+  final RatingRepository ratingRepository =
+      RatingRepository(RatingDataProvider());
   Home({super.key});
 
   @override
@@ -24,8 +31,15 @@ class Home extends StatelessWidget {
         BlocProvider<PredictionBloc>(
             create: (context) =>
                 PredictionBloc(predictionRepository: predictionRepository)),
+        BlocProvider<RatingBloc>(
+            create: (context) =>
+                RatingBloc(ratingRepository: ratingRepository)),
       ],
-      child: const MaterialApp(
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/home': (context) => const ResurePage(),
+        },
         home: Starter1(),
       ),
     );

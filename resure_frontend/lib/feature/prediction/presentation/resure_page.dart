@@ -11,34 +11,54 @@ class ResurePage extends StatelessWidget {
       children: [
         Container(
           height: MediaQuery.of(context).size.height * 0.6,
+          width: MediaQuery.of(context).size.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(RessureImages.carImage),
               fit: BoxFit.cover,
             ),
           ),
+          child: Padding(
+            padding: EdgeInsets.only(
+                bottom: MediaQuery.of(context).size.height * 0.08),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(RessureImages.logoImage),
+                Text(
+                  "Resure",
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white,
+                    decoration: TextDecoration.none,
+                  ),
+                )
+              ],
+            ),
+          ),
         ),
-        Positioned(
-          child: Image.asset(RessureImages.logoImage),
-          top: MediaQuery.of(context).size.height * 0.125,
-          left: MediaQuery.of(context).size.width * 0.35,
-        ),
-        Positioned(
-            top: MediaQuery.of(context).size.height * 0.225,
-            left: MediaQuery.of(context).size.width * 0.4,
-            child: Text(
-              "Resure",
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                color: Colors.white,
-                decoration: TextDecoration.none,
-              ),
-            )),
+        // Positioned(
+        //   child: Image.asset(RessureImages.logoImage),
+        //   top: MediaQuery.of(context).size.height * 0.125,
+        //   left: MediaQuery.of(context).size.width * 0.35,
+        // ),
+        // Positioned(
+        //     top: MediaQuery.of(context).size.height * 0.225,
+        //     left: MediaQuery.of(context).size.width * 0.4,
+        //     child: Text(
+        //       "Resure",
+        //       style: TextStyle(
+        //         fontWeight: FontWeight.w900,
+        //         color: Colors.white,
+        //         decoration: TextDecoration.none,
+        //       ),
+        //     )),
         Positioned(
           bottom: 0,
           child: Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Color.fromRGBO(246, 245, 245, 1),
               borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(40),
                 topRight: Radius.circular(40),
@@ -51,34 +71,37 @@ class ResurePage extends StatelessWidget {
                 Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.all(15.0),
+                      padding: EdgeInsets.fromLTRB(
+                          0,
+                          MediaQuery.of(context).size.height * 0.07,
+                          0,
+                          MediaQuery.of(context).size.height * 0.045),
                       child: Text(
-                        "  This Is \n  Resure",
+                        "  This is \n  Resure",
                         style: TextStyle(
-                          fontFamily: 'Courier',
-                          fontWeight: FontWeight.w900,
+                          fontFamily: 'Russo One',
+                          fontWeight: FontWeight.w400,
                           color: Colors.black,
                           decoration: TextDecoration.none,
                           fontSize: 35,
                         ),
                       ),
                     ),
-                    SizedBox(
-                      height: 20,
-                    ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: EdgeInsets.fromLTRB(
+                          MediaQuery.of(context).size.width * 0.07,
+                          0,
+                          MediaQuery.of(context).size.width * 0.07,
+                          0),
                       child: Text(
                         textAlign: TextAlign.center,
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum rhoncus imperdiet. Donec a mauris volutpat turpis volutpat suscipit. ",
                         style: styles(),
                       ),
                     ),
-                    SizedBox(
-                      height: 40,
-                    ),
                     Padding(
-                      padding: EdgeInsets.symmetric(vertical: 16.0),
+                      padding: EdgeInsets.only(
+                          top: MediaQuery.of(context).size.height * 0.08),
                       child: Material(
                         elevation: 5.0,
                         color: Colors.blue,
@@ -92,8 +115,8 @@ class ResurePage extends StatelessWidget {
                                   builder: (context) => InputPage()),
                             );
                           },
-                          minWidth: 300.0,
-                          height: 60.0,
+                          minWidth: MediaQuery.of(context).size.width * 0.8,
+                          height: MediaQuery.of(context).size.height * 0.08,
                           child: Text(
                             'ADD SPECIFICATION',
                             style: TextStyle(

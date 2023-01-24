@@ -7,6 +7,8 @@ abstract class PredictionState extends Equatable {
   List<Object> get props => [];
 }
 
+class PredictionIdle extends PredictionState {}
+
 class PredictionLoading extends PredictionState {}
 
 class PredictionOperationSucess extends PredictionState {
