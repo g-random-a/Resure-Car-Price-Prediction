@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -116,8 +118,8 @@ Future Function(dynamic context) modal = (
           return SizedBox(
             height: 400,
             child: BlocBuilder<PredictionBloc, PredictionState>(
-                builder: (context, state) {
-              if (state is PredictionOperationSucess) {
+                builder: (context, pstate) {
+              if (pstate is PredictionOperationSucess) {
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -140,7 +142,7 @@ Future Function(dynamic context) modal = (
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           child: Text(
-                            state.price.toString() + " BIRR",
+                            pstate.price.toString() + " BIRR",
                             style: TextStyle(
                               fontSize: 25.0,
                               fontWeight: FontWeight.w900,
@@ -151,34 +153,51 @@ Future Function(dynamic context) modal = (
                       const SizedBox(height: 50),
                       BlocBuilder<RatingBloc, RatingState>(
                           builder: (context, state) {
+                        int? id = null;
                         if (state is RatingLoading) {
-                          return SpinKitWanderingCubes(
+                          return SpinKitThreeBounce(
                             color: Colors.teal,
                             size: 50.0,
                           );
                         }
-                        if (state is RatingOperationSucess) {
-                          return Center(
-                              child: Text("thankyou for ur feedback."));
-                        }
+                        // if (state is RatingOperationSucess) {
+                        //   return Center(
+                        //       child: Text("thankyou for ur feedback."));
+                        // }
                         return Column(
                           children: [
                             state is RatingOperationFailure
                                 ? Text("Error, Please try again!",
-                                    style: TextStyle(color: Colors.red))
-                                : SizedBox(),
-                            const Text(
-                              "Rate Prediction",
-                              style: TextStyle(
-                                fontSize: 25.0,
-                                fontWeight: FontWeight.w900,
-                                color: Colors.black,
-                                decoration: TextDecoration.none,
-                              ),
-                            ),
+                                    style: TextStyle(
+                                      fontSize: 25.0,
+                                      fontWeight: FontWeight.w900,
+                                      color: Colors.red,
+                                      decoration: TextDecoration.none,
+                                    ))
+                                : state is RatingOperationSucess
+                                    ? Text(
+                                        "thankyou for ur feedback.",
+                                        style: TextStyle(
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.blue,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      )
+                                    : const Text(
+                                        "Rate Prediction",
+                                        style: TextStyle(
+                                          fontSize: 25.0,
+                                          fontWeight: FontWeight.w900,
+                                          color: Colors.black,
+                                          decoration: TextDecoration.none,
+                                        ),
+                                      ),
                             const SizedBox(height: 10),
                             RatingBar.builder(
-                              initialRating: 0,
+                              initialRating: state is RatingOperationSucess
+                                  ? state.rating.rate
+                                  : 0,
                               minRating: 1,
                               direction: Axis.horizontal,
                               allowHalfRating: true,
@@ -189,10 +208,14 @@ Future Function(dynamic context) modal = (
                                 Icons.star,
                                 color: Colors.amber,
                               ),
-                              onRatingUpdate: (rating) {
-                                Rating rate = Rating(id: 1, rate: 3);
+                              onRatingUpdate: (rating) async {
+                                await Future.delayed(Duration(seconds: 1));
+                                Rating rate = Rating(id: id ?? 1, rate: rating);
                                 BlocProvider.of<RatingBloc>(context)
                                     .add(RatingCreate(rate));
+                                if (state is RatingOperationSucess) {
+                                  id = state.rating.id;
+                                }
                               },
                             ),
                           ],

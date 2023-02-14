@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+import 'package:frontend/feature/prediction/model/Rating.dart';
 
 abstract class RatingState extends Equatable {
   const RatingState();
@@ -12,11 +13,11 @@ class RatingIdle extends RatingState {}
 class RatingLoading extends RatingState {}
 
 class RatingOperationSucess extends RatingState {
-  final String price;
-  RatingOperationSucess(this.price);
+  final Rating rating;
+  RatingOperationSucess(this.rating);
 
   @override
-  List<Object> get props => [price];
+  List<Object> get props => [rating];
 }
 
 class RatingOperationFailure extends RatingState {

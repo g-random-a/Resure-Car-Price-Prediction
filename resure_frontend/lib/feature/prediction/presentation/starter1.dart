@@ -49,6 +49,8 @@ class _Starter1State extends State<Starter1> {
       Navigator.popAndPushNamed(context, '/home');
     };
 
+    // print()
+
     return Scaffold(
       body: Container(
         color: Colors.white,

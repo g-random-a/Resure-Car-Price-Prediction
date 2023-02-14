@@ -3,6 +3,7 @@ import 'package:frontend/feature/prediction/domain/bloc/RatingBloc/rating_event.
 import 'package:frontend/feature/prediction/domain/bloc/RatingBloc/rating_state.dart';
 
 import '../../../data/repository/rating.dart';
+import '../../../model/Rating.dart';
 
 class RatingBloc extends Bloc<RatingEvent, RatingState> {
   final RatingRepository ratingRepository;
@@ -25,8 +26,8 @@ class RatingBloc extends Bloc<RatingEvent, RatingState> {
         emit(RatingOperationSucess(Ratings));
       } catch (error) {
         print('error is printed');
-        // emit(RatingOperationFailure(error));
-        emit(RatingOperationSucess("2000"));
+        emit(RatingOperationFailure(error));
+        // emit(RatingOperationSucess(event.rating));
       }
     }));
   }

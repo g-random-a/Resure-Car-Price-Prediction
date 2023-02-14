@@ -1,6 +1,6 @@
 class Rating {
   int? id;
-  int rate;
+  double rate;
   Rating({
     this.id,
     required this.rate,

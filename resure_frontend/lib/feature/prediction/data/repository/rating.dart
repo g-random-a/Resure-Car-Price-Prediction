@@ -5,7 +5,7 @@ class RatingRepository {
   RatingDataProvider ratingDataProvider;
   RatingRepository(this.ratingDataProvider);
 
-  Future<String> rate(Rating rating) async {
+  Future<Rating> rate(Rating rating) async {
     return await ratingDataProvider.rate(rating);
   }
 }
