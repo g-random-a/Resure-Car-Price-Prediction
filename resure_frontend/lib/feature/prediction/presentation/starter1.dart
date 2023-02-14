@@ -35,6 +35,7 @@ class _Starter1State extends State<Starter1> {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     Function() func = () {
       setState(() {
         cont.nextPage();
@@ -55,7 +56,8 @@ class _Starter1State extends State<Starter1> {
       body: Container(
         color: Colors.white,
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 25, vertical: 10),
+          padding: EdgeInsets.symmetric(
+              horizontal: size.height / 28, vertical: size.height / 70),
           child: Column(
             children: [
               Container(
@@ -66,6 +68,9 @@ class _Starter1State extends State<Starter1> {
                       children: [
                         Image.asset(
                           RessureImages.logoImage,
+                          width: size.width / 3.5,
+                          height: size.height / 10,
+                          fit: BoxFit.fill,
                           color: Color.fromARGB(255, 18, 125, 175),
                         ),
                         // SizedBox(
@@ -74,7 +79,8 @@ class _Starter1State extends State<Starter1> {
                         Text(
                           "Resure",
                           style: TextStyle(
-                              fontSize: 35,
+                              fontSize:
+                                  min(size.height / 20, size.width / 10.9),
                               fontFamily: 'Raleway',
                               color: Color.fromARGB(255, 18, 125, 175),
                               fontWeight: FontWeight.bold),
@@ -88,7 +94,8 @@ class _Starter1State extends State<Starter1> {
                             child: Text(
                               'skip',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize:
+                                    min(size.height / 38, size.width / 18.42),
                                 fontFamily: 'Raleway',
                               ),
                             ))
@@ -107,7 +114,7 @@ class _Starter1State extends State<Starter1> {
                       child: CarouselSlider(
                         carouselController: cont,
                         options: CarouselOptions(
-                          height: 550.0,
+                          height: size.height / 1.4,
                           viewportFraction: 1,
                           enableInfiniteScroll: false,
                           autoPlay: false,
@@ -137,7 +144,9 @@ class _Starter1State extends State<Starter1> {
                                       children: [
                                         Image.asset(
                                           images[i],
-                                          width: 350,
+                                          width: size.width / 1.086,
+                                          height: size.height / 3,
+                                          fit: BoxFit.fill,
                                           // height: 450,
                                         ),
                                         // SizedBox(
@@ -146,7 +155,8 @@ class _Starter1State extends State<Starter1> {
                                         Text(
                                           title[i],
                                           style: TextStyle(
-                                              fontSize: 32,
+                                              fontSize: min(size.height / 21.8,
+                                                  size.width / 11.87),
                                               fontFamily: 'RobotoMono',
                                               fontWeight: FontWeight.bold),
                                         ),
@@ -157,10 +167,11 @@ class _Starter1State extends State<Starter1> {
                                           discription[i],
                                           textAlign: TextAlign.center,
                                           style: TextStyle(
-                                              fontSize: 16,
+                                              fontSize: min(size.height / 43.75,
+                                                  size.width / 23.75),
                                               fontFamily: 'RobotoMono'),
                                         ),
-                                        SizedBox(height: 20),
+                                        // SizedBox(height: size.height / 35),
                                       ],
                                     ),
                                   ));
@@ -175,12 +186,12 @@ class _Starter1State extends State<Starter1> {
                         activeIndex: active_index,
                         count: 3,
                         onDotClicked: (count) => {cont.animateToPage(count)},
-                        effect: const ExpandingDotsEffect(
+                        effect: ExpandingDotsEffect(
                           // dotColor: Color.fromARGB(255, 138, 130, 130),
                           dotColor: Colors.grey,
                           activeDotColor: Colors.blue,
-                          dotWidth: 8,
-                          dotHeight: 10,
+                          dotWidth: size.width / 47.5,
+                          dotHeight: size.height / 70,
                         ),
                       ),
                     ),
@@ -222,7 +233,7 @@ class _Starter1State extends State<Starter1> {
                     ]),
               ),
               SizedBox(
-                height: 20,
+                height: size.height / 35,
               ),
             ],
           ),

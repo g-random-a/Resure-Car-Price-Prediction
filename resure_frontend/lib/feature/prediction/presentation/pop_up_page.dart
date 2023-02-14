@@ -19,6 +19,7 @@ class MyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: AppBar(
         title: const FittedBox(
@@ -36,49 +37,52 @@ class MyWidget extends StatelessWidget {
                             topRight: Radius.circular(35))),
                     builder: (BuildContext context) {
                       return SizedBox(
-                        height: 400,
+                        height: size.height / 1.75,
                         child: Center(
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              const Text(
+                              Text(
                                 "Predicted Price",
                                 style: TextStyle(
-                                  fontSize: 35.0,
+                                  fontSize:
+                                      min(size.height / 20, size.width / 10.9),
                                   fontWeight: FontWeight.w900,
                                   color: Colors.black,
                                   decoration: TextDecoration.none,
                                 ),
                               ),
-                              const SizedBox(height: 30),
+                              SizedBox(height: size.height / 23.33),
                               Container(
-                                  width: 200,
-                                  height: 50,
+                                  width: size.width / 1.9,
+                                  height: size.height / 14,
                                   alignment: Alignment.center,
                                   decoration: const BoxDecoration(
                                       color: Color.fromRGBO(201, 214, 227, 1),
                                       borderRadius: BorderRadius.all(
                                           Radius.circular(15))),
-                                  child: const Text(
+                                  child: Text(
                                     '25,000 ETB',
                                     style: TextStyle(
-                                      fontSize: 25.0,
+                                      fontSize: min(
+                                          size.height / 28, size.width / 15.2),
                                       fontWeight: FontWeight.w900,
                                       color: Colors.black,
                                       decoration: TextDecoration.none,
                                     ),
                                   )),
-                              const SizedBox(height: 50),
-                              const Text(
+                              SizedBox(height: size.height / 14),
+                              Text(
                                 "Rate Prediction",
                                 style: TextStyle(
-                                  fontSize: 25.0,
+                                  fontSize:
+                                      min(size.height / 28, size.width / 15.2),
                                   fontWeight: FontWeight.w900,
                                   color: Colors.black,
                                   decoration: TextDecoration.none,
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              SizedBox(height: size.height / 70),
                               RatingBar.builder(
                                 initialRating: 3,
                                 minRating: 1,
@@ -111,12 +115,13 @@ Future Function(dynamic context) modal = (
 ) =>
     showModalBottomSheet(
         context: context,
-        shape: const RoundedRectangleBorder(
+        shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(35), topRight: Radius.circular(35))),
         builder: (BuildContext context) {
+          var size = MediaQuery.of(context).size;
           return SizedBox(
-            height: 400,
+            height: size.height / 1.75,
             child: BlocBuilder<PredictionBloc, PredictionState>(
                 builder: (context, pstate) {
               if (pstate is PredictionOperationSucess) {
@@ -124,18 +129,18 @@ Future Function(dynamic context) modal = (
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
+                      Text(
                         "Predicted Price",
                         style: TextStyle(
-                          fontSize: 35.0,
+                          fontSize: min(size.height / 20, size.width / 10.9),
                           fontWeight: FontWeight.w900,
                           color: Colors.teal,
                         ),
                       ),
-                      const SizedBox(height: 30),
+                      SizedBox(height: size.height / 23.3),
                       Container(
-                          width: 200,
-                          height: 50,
+                          width: size.width / 1.9,
+                          height: size.height / 14,
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
                               color: Color.fromRGBO(201, 214, 227, 1),
@@ -144,13 +149,14 @@ Future Function(dynamic context) modal = (
                           child: Text(
                             pstate.price.toString() + " BIRR",
                             style: TextStyle(
-                              fontSize: 25.0,
+                              fontSize:
+                                  min(size.height / 28, size.width / 15.2),
                               fontWeight: FontWeight.w900,
                               color: Colors.black,
                               decoration: TextDecoration.none,
                             ),
                           )),
-                      const SizedBox(height: 50),
+                      SizedBox(height: size.height / 14),
                       BlocBuilder<RatingBloc, RatingState>(
                           builder: (context, state) {
                         int? id = null;
@@ -169,7 +175,8 @@ Future Function(dynamic context) modal = (
                             state is RatingOperationFailure
                                 ? Text("Error, Please try again!",
                                     style: TextStyle(
-                                      fontSize: 25.0,
+                                      fontSize: min(
+                                          size.height / 28, size.width / 15.2),
                                       fontWeight: FontWeight.w900,
                                       color: Colors.red,
                                       decoration: TextDecoration.none,
@@ -178,22 +185,24 @@ Future Function(dynamic context) modal = (
                                     ? Text(
                                         "thankyou for ur feedback.",
                                         style: TextStyle(
-                                          fontSize: 25.0,
+                                          fontSize: min(size.height / 28,
+                                              size.width / 15.2),
                                           fontWeight: FontWeight.w900,
                                           color: Colors.blue,
                                           decoration: TextDecoration.none,
                                         ),
                                       )
-                                    : const Text(
+                                    : Text(
                                         "Rate Prediction",
                                         style: TextStyle(
-                                          fontSize: 25.0,
+                                          fontSize: min(size.height / 28,
+                                              size.width / 15.2),
                                           fontWeight: FontWeight.w900,
                                           color: Colors.black,
                                           decoration: TextDecoration.none,
                                         ),
                                       ),
-                            const SizedBox(height: 10),
+                            SizedBox(height: size.height / 70),
                             RatingBar.builder(
                               initialRating: state is RatingOperationSucess
                                   ? state.rating.rate
@@ -207,6 +216,7 @@ Future Function(dynamic context) modal = (
                               itemBuilder: (context, _) => Icon(
                                 Icons.star,
                                 color: Colors.amber,
+                                size: size.height / 35,
                               ),
                               onRatingUpdate: (rating) async {
                                 await Future.delayed(Duration(seconds: 1));

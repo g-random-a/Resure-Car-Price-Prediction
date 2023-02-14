@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:frontend/core/images.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
@@ -7,11 +9,12 @@ class ResurePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var size = MediaQuery.of(context).size;
     return Stack(
       children: [
         Container(
-          height: MediaQuery.of(context).size.height * 0.6,
-          width: MediaQuery.of(context).size.width,
+          height: size.height * 0.6,
+          width: size.width,
           decoration: const BoxDecoration(
             image: DecorationImage(
               image: AssetImage(RessureImages.carImage),
@@ -29,10 +32,10 @@ class ResurePage extends StatelessWidget {
                 Text(
                   "Resure",
                   style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white,
-                    decoration: TextDecoration.none,
-                  ),
+                      fontWeight: FontWeight.w900,
+                      color: Colors.white,
+                      decoration: TextDecoration.none,
+                      fontSize: min(size.height / 15, size.width / 8.14)),
                 )
               ],
             ),
@@ -83,7 +86,7 @@ class ResurePage extends StatelessWidget {
                           fontWeight: FontWeight.w400,
                           color: Colors.black,
                           decoration: TextDecoration.none,
-                          fontSize: 35,
+                          fontSize: min(size.height / 20, size.width / 10.9),
                         ),
                       ),
                     ),
@@ -96,7 +99,7 @@ class ResurePage extends StatelessWidget {
                       child: Text(
                         textAlign: TextAlign.center,
                         "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum rhoncus imperdiet. Donec a mauris volutpat turpis volutpat suscipit. ",
-                        style: styles(),
+                        style: styles(size),
                       ),
                     ),
                     Padding(
@@ -121,6 +124,8 @@ class ResurePage extends StatelessWidget {
                             'ADD SPECIFICATION',
                             style: TextStyle(
                               color: Colors.white,
+                              fontSize:
+                                  min(size.height / 40, size.width / 8.13),
                             ),
                           ),
                         ),
@@ -136,12 +141,12 @@ class ResurePage extends StatelessWidget {
     );
   }
 
-  TextStyle styles() {
+  TextStyle styles(size) {
     return TextStyle(
       fontWeight: FontWeight.w500,
       color: Colors.black,
       decoration: TextDecoration.none,
-      fontSize: 14,
+      fontSize: min(size.height / 50, size.height / 27.2),
     );
   }
 }
