@@ -21,11 +21,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
+  final _formKey = GlobalKey<FormState>();
   bool _isLoaderVisible = false;
   @override
   Widget build(BuildContext context) {
     final scaffoldState = GlobalKey<ScaffoldState>();
-    final _formKey = GlobalKey<FormState>();
     final Map<String, dynamic> _register = {};
     return Material(
       child: LoaderOverlay(
@@ -882,6 +882,13 @@ class _InputPageState extends State<InputPage> {
                             // color: const Color.fromARGB(255, 156, 153, 153)
                             //     .withOpacity(0.1),
                           ),
+                         
+                         
+                         
+                         
+                         
+                         
+                         
                           BlocBuilder<PredictionBloc, PredictionState>(
                               builder: (context, state) {
                             if (state is PredictionLoading) {

@@ -40,7 +40,7 @@ class Home extends StatelessWidget {
         routes: {
           '/home': (context) => const ResurePage(),
         },
-        home: Starter1(),
+        home: SafeArea(child: Starter1()),
       ),
     );
   }
