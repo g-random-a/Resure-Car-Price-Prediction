@@ -38,11 +38,14 @@ dependencies:
   equatable: ^2.0.5
   http: ^0.13.5
   flutter_rating_bar: ^4.0.1
+<<<<<<< HEAD
   carousel_slider: ^4.2.1
   smooth_page_indicator: ^1.0.0+2
   flutter_secure_storage: ^7.0.1
   flutter_spinkit: ^5.1.0
   loader_overlay: ^2.1.0
+=======
+>>>>>>> 24905487c4dd715e91df4be9b55d71bd07e89b2a
 
 dev_dependencies:
   flutter_test:
