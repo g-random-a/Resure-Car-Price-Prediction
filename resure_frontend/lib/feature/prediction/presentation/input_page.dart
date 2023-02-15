@@ -1000,8 +1000,8 @@ class _InputPageState extends State<InputPage> {
               ),
             ),
             Positioned(
-              left: 10,
-              top: 10,
+              left: 5,
+              top: 35,
               child: Material(
                 color: Colors.transparent,
                 child: IconButton(
@@ -2042,8 +2042,8 @@ class _InputPageStatef extends State<InputPagef> {
               ),
             ),
             Positioned(
-              left: 10,
-              top: 10,
+              top: 35,
+              left: 5,
               child: Material(
                 color: Colors.transparent,
                 child: IconButton(

@@ -42,11 +42,13 @@ class Home extends StatelessWidget {
         routes: {
           '/home': (context) => const ResurePage(),
         },
-        home: AnimatedSplashScreen(
-          splashTransition: SplashTransition.fadeTransition,
-          duration: 100,
-          splash: Splash1(), 
-          nextScreen: SafeArea(child: Starter1())),
+        home: SafeArea(
+          child: AnimatedSplashScreen(
+              splashTransition: SplashTransition.fadeTransition,
+              duration: 100,
+              splash: Splash1(),
+              nextScreen: SafeArea(child: Starter1())),
+        ),
       ),
     );
   }

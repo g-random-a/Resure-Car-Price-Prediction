@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -120,6 +121,8 @@ Future Function(dynamic context) modal = (
             child: BlocBuilder<PredictionBloc, PredictionState>(
                 builder: (context, pstate) {
               if (pstate is PredictionOperationSucess) {
+                String formatd =
+                    NumberFormat('#,###').format(double.parse(pstate.price));
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -138,17 +141,31 @@ Future Function(dynamic context) modal = (
                           height: 50,
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
-                              color: Color.fromRGBO(201, 214, 227, 1),
+                              color: Color.fromARGB(255, 11, 11, 12),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
-                          child: Text(
-                            pstate.price.toString() + " BIRR",
-                            style: TextStyle(
-                              fontSize: 25.0,
-                              fontWeight: FontWeight.w900,
-                              color: Colors.black,
-                              decoration: TextDecoration.none,
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(
+                                formatd,
+                                style: TextStyle(
+                                  fontSize: 25.0,
+                                  color: Colors.amber,
+                                  fontWeight: FontWeight.w900,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              Text(
+                                '  ETB',
+                                style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.amber,
+                                  fontWeight: FontWeight.w900,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
                           )),
                       const SizedBox(height: 50),
                       BlocBuilder<RatingBloc, RatingState>(
