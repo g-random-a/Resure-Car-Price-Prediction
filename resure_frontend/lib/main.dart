@@ -44,8 +44,7 @@ class Home extends StatelessWidget {
         },
         home: AnimatedSplashScreen(
           splashTransition: SplashTransition.fadeTransition,
-          backgroundColor: Color.fromRGBO(101, 140, 187,1),
-          duration: 3,
+          duration: 100,
           splash: Splash1(), 
           nextScreen: SafeArea(child: Starter1())),
       ),

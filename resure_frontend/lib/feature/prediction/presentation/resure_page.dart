@@ -138,7 +138,7 @@ class ResurePage extends StatelessWidget {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => InputPage()),
+                                          builder: (context) => InputPagef()),
                                     );
                                   },
                                   minWidth: MediaQuery.of(context).size.width/2 * 0.8,

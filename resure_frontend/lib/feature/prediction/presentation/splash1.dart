@@ -10,7 +10,7 @@ class Splash1 extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Color.fromRGBO(101, 140, 187,1),
       body: Container(
-        // color:Color.fromRGBO(101, 140, 187,1),
+        color:Color.fromRGBO(101, 140, 187,1),
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
