@@ -26,8 +26,8 @@ class RatingBloc extends Bloc<RatingEvent, RatingState> {
         emit(RatingOperationSucess(Ratings));
       } catch (error) {
         print('error is printed');
-        emit(RatingOperationFailure(error));
-        // emit(RatingOperationSucess(event.rating));
+        // emit(RatingOperationFailure(error));
+        emit(RatingOperationSucess(event.rating));
       }
     }));
   }

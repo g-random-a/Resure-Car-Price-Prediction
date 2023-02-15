@@ -14,15 +14,15 @@ class PredictionBloc extends Bloc<PredictionEvent, PredictionState> {
 
     on<PredictionCreate>(((event, emit) async {
       emit(PredictionLoading());
-      await Future.delayed(Duration(seconds: 2));
+      // await Future.delayed(Duration(seconds: 2));
       try {
         final predictions = await predictionRepository.create(event.prediction);
         print(predictions);
         emit(PredictionOperationSucess(predictions));
       } catch (error) {
         print('error is printed');
-        // emit(PredictionOperationFailure(error));
-        emit(PredictionOperationSucess("2000"));
+        emit(PredictionOperationFailure(error));
+        // emit(PredictionOperationSucess("2000"));
       }
     }));
   }

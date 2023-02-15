@@ -98,37 +98,65 @@ class ResurePage extends StatelessWidget {
                           0),
                       child: Text(
                         textAlign: TextAlign.center,
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum rhoncus imperdiet. Donec a mauris volutpat turpis volutpat suscipit. ",
+                        "Get accurate car valuations instantly with our machine learning-powered Car Price Prediction app. Just input the required data and get reliable estimates based on factors such as make and model, mileage, age, condition, and location.",
                         style: styles(size),
                       ),
                     ),
                     Padding(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.08),
-                      child: Material(
-                        elevation: 5.0,
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: MaterialButton(
-                          onPressed: () {
-                            onTap:
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => InputPage()),
-                            );
-                          },
-                          minWidth: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.08,
-                          child: Text(
-                            'ADD SPECIFICATION',
-                            style: TextStyle(
-                              color: Colors.white,
-                              fontSize:
-                                  min(size.height / 40, size.width / 8.13),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Material(
+                            elevation: 5.0,
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: MaterialButton(
+                              onPressed: () {
+                                onTap:
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => InputPage()),
+                                );
+                              },
+                              minWidth:
+                                  MediaQuery.of(context).size.width / 2 * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              child: Text(
+                                'EXPERT',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
                             ),
                           ),
-                        ),
+                          Material(
+                            elevation: 5.0,
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: MaterialButton(
+                              onPressed: () {
+                                onTap:
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => InputPagef()),
+                                );
+                              },
+                              minWidth:
+                                  MediaQuery.of(context).size.width / 2 * 0.8,
+                              height: MediaQuery.of(context).size.height * 0.08,
+                              child: Text(
+                                'AMATEUR',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ],

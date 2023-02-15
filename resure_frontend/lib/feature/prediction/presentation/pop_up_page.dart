@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:intl/intl.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
@@ -125,6 +126,8 @@ Future Function(dynamic context) modal = (
             child: BlocBuilder<PredictionBloc, PredictionState>(
                 builder: (context, pstate) {
               if (pstate is PredictionOperationSucess) {
+                String formatd =
+                    NumberFormat('#,###').format(double.parse(pstate.price));
                 return Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +146,7 @@ Future Function(dynamic context) modal = (
                           height: size.height / 14,
                           alignment: Alignment.center,
                           decoration: const BoxDecoration(
-                              color: Color.fromRGBO(201, 214, 227, 1),
+                              color: Color.fromARGB(255, 11, 11, 12),
                               borderRadius:
                                   BorderRadius.all(Radius.circular(15))),
                           child: Text(
