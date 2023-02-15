@@ -43,10 +43,11 @@ class Home extends StatelessWidget {
           '/home': (context) => const ResurePage(),
         },
         home: AnimatedSplashScreen(
-          splashTransition: SplashTransition.fadeTransition,
-          duration: 100,
-          splash: Splash1(), 
-          nextScreen: SafeArea(child: Starter1())),
+            backgroundColor: Color.fromRGBO(101, 140, 187, 1),
+            splashTransition: SplashTransition.scaleTransition,
+            duration: 4000,
+            splash: Splash1(),
+            nextScreen: SafeArea(child: Starter1())),
       ),
     );
   }
