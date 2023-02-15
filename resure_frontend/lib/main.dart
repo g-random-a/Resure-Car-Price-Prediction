@@ -1,3 +1,4 @@
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/feature/prediction/data/data_provider.dart/data_provider.dart';
@@ -6,6 +7,7 @@ import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
 import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
+import 'package:frontend/feature/prediction/presentation/splash1.dart';
 import 'package:frontend/feature/prediction/presentation/starter1.dart';
 
 import 'feature/prediction/data/data_provider.dart/Rating_data_provider.dart';
@@ -40,7 +42,12 @@ class Home extends StatelessWidget {
         routes: {
           '/home': (context) => const ResurePage(),
         },
-        home: SafeArea(child: Starter1()),
+        home: AnimatedSplashScreen(
+          splashTransition: SplashTransition.fadeTransition,
+          backgroundColor: Color.fromRGBO(101, 140, 187,1),
+          duration: 3,
+          splash: Splash1(), 
+          nextScreen: SafeArea(child: Starter1())),
       ),
     );
   }

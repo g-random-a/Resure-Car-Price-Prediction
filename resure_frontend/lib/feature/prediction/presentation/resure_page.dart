@@ -102,28 +102,56 @@ class ResurePage extends StatelessWidget {
                     Padding(
                       padding: EdgeInsets.only(
                           top: MediaQuery.of(context).size.height * 0.08),
-                      child: Material(
-                        elevation: 5.0,
-                        color: Colors.blue,
-                        borderRadius: BorderRadius.circular(10.0),
-                        child: MaterialButton(
-                          onPressed: () {
-                            onTap:
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => InputPage()),
-                            );
-                          },
-                          minWidth: MediaQuery.of(context).size.width * 0.8,
-                          height: MediaQuery.of(context).size.height * 0.08,
-                          child: Text(
-                            'ADD SPECIFICATION',
-                            style: TextStyle(
-                              color: Colors.white,
-                            ),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Material(
+                            elevation: 5.0,
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: MaterialButton(
+                                  onPressed: () {
+                                    onTap:
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => InputPage()),
+                                    );
+                                  },
+                                  minWidth: MediaQuery.of(context).size.width/2 * 0.8,
+                                  height: MediaQuery.of(context).size.height * 0.08,
+                                  child: Text(
+                                    'EXPERT',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
                           ),
-                        ),
+                          Material(
+                            elevation: 5.0,
+                            color: Colors.blue,
+                            borderRadius: BorderRadius.circular(10.0),
+                            child: MaterialButton(
+                                  onPressed: () {
+                                    onTap:
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => InputPage()),
+                                    );
+                                  },
+                                  minWidth: MediaQuery.of(context).size.width/2 * 0.8,
+                                  height: MediaQuery.of(context).size.height * 0.08,
+                                  child: Text(
+                                    'AMATEUR',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                          ),
+                        ],
                       ),
                     ),
                   ],
