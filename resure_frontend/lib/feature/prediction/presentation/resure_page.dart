@@ -95,7 +95,7 @@ class ResurePage extends StatelessWidget {
                           0),
                       child: Text(
                         textAlign: TextAlign.center,
-                        "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque rutrum rhoncus imperdiet. Donec a mauris volutpat turpis volutpat suscipit. ",
+                        "Get accurate car valuations instantly with our machine learning-powered Car Price Prediction app. Just input the required data and get reliable estimates based on factors such as make and model, mileage, age, condition, and location.",
                         style: styles(),
                       ),
                     ),
