@@ -45,6 +45,7 @@ dependencies:
   flutter_spinkit: ^5.1.0
   loader_overlay: ^2.1.0
   animated_splash_screen: 
+  intl: ^0.18.0
 
 dev_dependencies:
   flutter_test:
