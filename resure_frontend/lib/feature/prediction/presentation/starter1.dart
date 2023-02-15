@@ -25,7 +25,7 @@ class _Starter1State extends State<Starter1> {
   List<String> title = [
     "Welcome To Resure",
     "Get Car Price Easly",
-    "Car Features"
+    "Car Featu"
   ];
   List<String> discription = [
     "Resure is AI based car price predition mobile app that will predict your old car current market price with the highest accurency",
