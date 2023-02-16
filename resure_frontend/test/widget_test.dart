@@ -5,28 +5,16 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-<<<<<<< HEAD
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
-=======
-// import 'package:flutter/material.dart';
-// import 'package:flutter_test/flutter_test.dart';
->>>>>>> 24905487c4dd715e91df4be9b55d71bd07e89b2a
 
 // import 'package:frontend/main.dart';
 
-<<<<<<< HEAD
-void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(Home());
-=======
 // void main() {
 //   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
 //     // Build our app and trigger a frame.
 //     await tester.pumpWidget(const Home());
->>>>>>> 24905487c4dd715e91df4be9b55d71bd07e89b2a
 
 //     // Verify that our counter starts at 0.
 //     expect(find.text('0'), findsOneWidget);

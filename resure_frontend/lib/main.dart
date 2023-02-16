@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:frontend/feature/prediction/data/data_provider.dart/data_provider.dart';
 import 'package:frontend/feature/prediction/data/repository/repository.dart';
 import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
+import 'package:frontend/feature/prediction/presentation/barchart.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
 import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
@@ -52,3 +53,5 @@ class Home extends StatelessWidget {
     );
   }
 }
+
+

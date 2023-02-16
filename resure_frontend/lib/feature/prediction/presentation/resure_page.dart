@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:frontend/core/images.dart';
+import 'package:frontend/feature/prediction/presentation/barchart.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
+import 'package:outline_gradient_button/outline_gradient_button.dart';
 
 class ResurePage extends StatelessWidget {
   const ResurePage({super.key});
@@ -41,11 +43,35 @@ class ResurePage extends StatelessWidget {
             ),
           ),
         ),
-        // Positioned(
-        //   child: Image.asset(RessureImages.logoImage),
-        //   top: MediaQuery.of(context).size.height * 0.125,
-        //   left: MediaQuery.of(context).size.width * 0.35,
-        // ),
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Align(
+            child: OutlineGradientButton(
+              child: Text(
+                "Model Analysis",
+                style: TextStyle(
+                  fontFamily: 'Russo One',
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  decoration: TextDecoration.none,
+                  // fontSize: min(size.height / 20, size.width / 10.9),
+                ),
+              ),
+              gradient: LinearGradient(colors: [Colors.blue, Colors.green,Colors.red]),
+              onTap: () {
+                 onTap:
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => BarChart()),
+                                );
+              },
+              strokeWidth: 3,
+              radius: Radius.circular(16),
+            ),
+            alignment: AlignmentDirectional.topEnd,
+          ),
+        ),
         // Positioned(
         //     top: MediaQuery.of(context).size.height * 0.225,
         //     left: MediaQuery.of(context).size.width * 0.4,
