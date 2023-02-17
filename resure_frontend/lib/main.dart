@@ -5,6 +5,7 @@ import 'package:frontend/feature/prediction/data/data_provider.dart/data_provide
 import 'package:frontend/feature/prediction/data/repository/repository.dart';
 import 'package:frontend/feature/prediction/domain/bloc/prediction_bloc.dart';
 import 'package:frontend/feature/prediction/presentation/barchart.dart';
+import 'package:frontend/feature/prediction/presentation/cars.dart';
 import 'package:frontend/feature/prediction/presentation/input_page.dart';
 import 'package:frontend/feature/prediction/presentation/pop_up_page.dart';
 import 'package:frontend/feature/prediction/presentation/resure_page.dart';
@@ -41,7 +42,7 @@ class Home extends StatelessWidget {
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         routes: {
-          '/home': (context) => const ResurePage(),
+          '/home': (context) => const Cars(),
         },
         home: AnimatedSplashScreen(
             backgroundColor: Color.fromRGBO(101, 140, 187, 1),
