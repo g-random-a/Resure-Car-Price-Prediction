@@ -1,7 +1,8 @@
 # Car-Price-Prediction
 
 ## This is Resure
-Resure is car sale price prediction software for individuals who want to predict a car value based on car brand, model, year of manufacture, fuel type, transmission type and others. With the rapid growth of cost of new cars and incapability of customers to buy these cars is a good reason to work on this project.
+Resure is car sale price prediction software for individuals who want to predict a car value based on car brand, model, year of manufacture, fuel type, transmission type and others. 
+With the rapid growth of cost of new cars and incapability of customers to buy these cars is a good reason to work on this project.
 
 ## Benefits of the product
 
